@@ -8,6 +8,8 @@ var box1, pig1;
 var fondo;
 var plataforma, constrainedlog,chain;
 
+var gameState="onSling"
+
 // ejemplos de diferentes tipos de variables
 // cadena
 var string="consuelo"
@@ -106,10 +108,15 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+    if(gameState!=="launched"){
+
+        Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+    }
+    
 }
 function mouseReleased(){
     sling.fly();
+    gameState="launched"
 }
 function keyPressed(){
     if(keyCode===32){
